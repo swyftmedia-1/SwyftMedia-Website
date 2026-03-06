@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swyft Media | Shaping Brands for the Digital Age</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Bold Agency Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GSAP for McCann-style animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            white: '#f4f4f5',
+                            accent: '#4ade80', // Subtle neon green for "Swyft" digital vibe
+                            gray: '#27272a'
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0a0a; color: #f4f4f5; overflow-x: hidden; }
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(244, 244, 245, 0.3);
+            transition: all 0.3s ease;
+        }
+        .text-outline:hover {
+            color: #f4f4f5;
+            -webkit-text-stroke: 1px transparent;
+        }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Custom selection color */
+        ::selection { background: #f4f4f5; color: #0a0a0a; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-white selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-black/90 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-heading font-bold text-2xl tracking-tighter uppercase">Swyft<span class="text-brand-accent">.</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 text-sm font-medium tracking-wide uppercase">
+                <a href="#" class="hover:text-brand-accent transition-colors">Home</a>
+                <a href="#about" class="hover:text-brand-accent transition-colors">About Us</a>
+                <a href="#services" class="hover:text-brand-accent transition-colors">Services</a>
+                <a href="#projects" class="hover:text-brand-accent transition-colors">Projects</a>
+                <a href="#team" class="hover:text-brand-accent transition-colors">People</a>
+                <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+            </div>
+
+            <button class="lg:hidden text-white text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center px-6 pt-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full relative z-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-brand-accent mb-6 g-reveal">Since 2015</p>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-9xl font-bold uppercase leading-[0.9] tracking-tighter mb-8 g-reveal">
+                Shaping <br><span class="text-outline">Brands</span> For<br>The Digital Age
+            </h1>
+            <div class="grid md:grid-cols-2 gap-8 mt-12 g-reveal border-t border-white/20 pt-8">
+                <div>
+                    <h2 class="text-2xl font-heading font-semibold mb-4">From PR to Pixels — We Do It All</h2>
+                </div>
+                <div>
+                    <p class="text-lg text-gray-400 leading-relaxed font-light">
+                        At Swyft Media, we blend strategic communication, digital innovation, and creative design to build powerful brand experiences. Whether it’s PR & communication training, media monitoring, reputation management, web development, or digital marketing — we’re here to drive your growth in every direction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Banner (Marquee) -->
+    <div class="w-full bg-brand-accent text-brand-black py-4 overflow-hidden border-y border-brand-accent font-heading uppercase font-bold text-xl flex whitespace-nowrap">
+        <div class="animate-marquee flex gap-8 px-4">
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+        </div>
+        <div class="animate-marquee flex gap-8 px-4 absolute top-0" style="left: 100%;">
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+            <span>Warning: These services might trigger unexpected business growth •</span>
+        </div>
+    </div>
+
+    <!-- About Intro -->
+    <section id="about" class="py-32 px-6 bg-brand-black">
+        <div class="max-w-5xl mx-auto text-center g-reveal">
+            <h3 class="text-xl md:text-3xl font-light leading-snug">
+                Swyft Media is a powerful branding agency for purpose-driven companies. We create branding that <span class="font-semibold text-white">looks great, sounds strong, and delivers positive results.</span> Side effects of our services include skyrocketing sales, endless leads, and competitors crying in the corner. Try us and brace for impact—your business is about to go viral!
+            </h3>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 g-reveal">
+                <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter">Services.</h2>
+                <a href="#" class="hidden md:inline-block pb-1 border-b border-brand-accent text-brand-accent hover:text-white hover:border-white transition-all uppercase tracking-widest text-sm">See More</a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-0 border-t border-white/20">
+                <!-- Service 1 -->
+                <div class="group border-b border-white/20 py-12 hover:bg-white/5 transition-colors duration-500 px-4 g-reveal flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/4 font-heading text-4xl text-gray-600 font-bold">01.</div>
+                    <div class="md:w-1/3">
+                        <h3 class="text-3xl font-heading font-semibold mb-4 group-hover:text-brand-accent transition-colors">Digital Marketing</h3>
+                        <ul class="text-sm text-gray-400 space-y-2 uppercase tracking-wide">
+                            <li>Social Media Marketing</li>
+                            <li>Email Marketing</li>
+                            <li>Content Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-5/12">
+                        <p class="text-gray-400 font-light text-lg">Clicks, conversions, and a little marketing mischief—that’s our recipe! We turn scrolling zombies into loyal customers and making algorithms bow to your brand.</p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group border-b border-white/20 py-12 hover:bg-white/5 transition-colors duration-500 px-4 g-reveal flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/4 font-heading text-4xl text-gray-600 font-bold">02.</div>
+                    <div class="md:w-1/3">
+                        <h3 class="text-3xl font-heading font-semibold mb-4 group-hover:text-brand-accent transition-colors">Web Development</h3>
+                        <ul class="text-sm text-gray-400 space-y-2 uppercase tracking-wide">
+                            <li>Custom Website Design</li>
+                            <li>E-commerce Development</li>
+                            <li>CMS Integration</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-5/12">
+                        <p class="text-gray-400 font-light text-lg">Your website deserves more than just ‘meh.’ We build pixel-perfect, lightning-fast sites that impress, convert, and maybe even make your competitors jealous.</p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group border-b border-white/20 py-12 hover:bg-white/5 transition-colors duration-500 px-4 g-reveal flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/4 font-heading text-4xl text-gray-600 font-bold">03.</div>
+                    <div class="md:w-1/3">
+                        <h3 class="text-3xl font-heading font-semibold mb-4 group-hover:text-brand-accent transition-colors">Google Ads</h3>
+                        <ul class="text-sm text-gray-400 space-y-2 uppercase tracking-wide">
+                            <li>Keyword Research</li>
+                            <li>Ad Copywriting</li>
+                            <li>Performance Tracking</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-5/12">
+                        <p class="text-gray-400 font-light text-lg">Running Google Ads without us is like throwing money into a black hole—fun but useless! We craft high-converting ads that attract clicks, leads, and sales.</p>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group border-b border-white/20 py-12 hover:bg-white/5 transition-colors duration-500 px-4 g-reveal flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/4 font-heading text-4xl text-gray-600 font-bold">04.</div>
+                    <div class="md:w-1/3">
+                        <h3 class="text-3xl font-heading font-semibold mb-4 group-hover:text-brand-accent transition-colors">SEO</h3>
+                        <ul class="text-sm text-gray-400 space-y-2 uppercase tracking-wide">
+                            <li>Technical SEO</li>
+                            <li>Off-Page SEO</li>
+                            <li>Local SEO</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-5/12">
+                        <p class="text-gray-400 font-light text-lg">Google’s first page isn’t a VIP club—but we’ve got the connections to get you in! More traffic, better rankings, and zero shady tactics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fast Tags Marquee -->
+    <div class="py-12 bg-white text-black overflow-hidden relative">
+        <h3 class="text-center font-heading font-bold mb-8 uppercase tracking-widest text-sm">From Productions To Pixels: Our Hidden Formula</h3>
+        <div class="flex whitespace-nowrap font-heading text-6xl md:text-8xl font-black uppercase tracking-tighter opacity-10">
+            <div class="animate-marquee flex gap-16 px-8">
+                <span>META</span><span>SEO</span><span>WEBSITE</span><span>GRAPHIC DESIGN</span><span>FLUTTER</span>
+            </div>
+            <div class="animate-marquee flex gap-16 px-8 absolute" style="left: 100%;">
+                <span>META</span><span>SEO</span><span>WEBSITE</span><span>GRAPHIC DESIGN</span><span>FLUTTER</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proof Over Promises (Projects) -->
+    <section id="projects" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 g-reveal">
+                <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6">Proof Over Promises</h2>
+                <p class="max-w-2xl mx-auto text-gray-400 text-lg font-light">Proof that we don’t just talk big—we deliver BIGGER! Scroll through our portfolio, admire the magic, and yes, we accept applause, coffee bribes, and business inquiries.</p>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Proj Card -->
+                <div class="group relative overflow-hidden bg-brand-gray rounded-xl aspect-square g-reveal p-8 flex flex-col justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10 transition-opacity duration-300"></div>
+                    <div class="relative z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-brand-accent font-mono text-sm mb-2">360 Branding • 2020-2026</p>
+                        <h3 class="text-3xl font-heading font-bold mb-2">iWare Supply Chain Services Limited</h3>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden bg-brand-gray rounded-xl aspect-square g-reveal p-8 flex flex-col justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10 transition-opacity duration-300"></div>
+                    <div class="relative z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-brand-accent font-mono text-sm mb-2">Branding • 2024-2026</p>
+                        <h3 class="text-3xl font-heading font-bold mb-2">Khalsa Little Flower</h3>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden bg-brand-gray rounded-xl aspect-square g-reveal p-8 flex flex-col justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10 transition-opacity duration-300"></div>
+                    <div class="relative z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-brand-accent font-mono text-sm mb-2">Branding • 2025</p>
+                        <h3 class="text-3xl font-heading font-bold mb-2">Jagadguru Ramanandacharya Swami Shri Rambhadracharya Ji Maharaj</h3>
+                    </div>
+                </div>
+
+                <div class="group relative overflow-hidden bg-brand-gray rounded-xl aspect-square g-reveal p-8 flex flex-col justify-end">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10 transition-opacity duration-300"></div>
+                    <div class="relative z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-brand-accent font-mono text-sm mb-2">PR Branding & Marketing • 2025</p>
+                        <h3 class="text-3xl font-heading font-bold mb-2">OMSPACE ROCKET AND EXPLORATION PVT LTD</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center g-reveal">
+                <p class="text-gray-400 mb-4 text-sm">Also trusted by: Patel Tours & Travels, CWC, Tapanshi Finanziel, Maxwell Engineering, Intercity Travels, Arristo Resorts, AQUADEF.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Milestones & Stats -->
+    <section class="py-24 px-6 border-y border-white/10 bg-white/5">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="g-reveal">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold uppercase tracking-tighter mb-8">Milestones & Successes</h2>
+                <div class="space-y-8 border-l border-brand-accent/30 pl-6">
+                    <div class="relative">
+                        <div class="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-brand-accent"></div>
+                        <h4 class="text-xl font-bold">Prasthanam - 2025</h4>
+                        <p class="text-gray-400 text-sm mt-2">Digital partner for Prasthanam 2025. The event concluded on a high note with vibrant participation and creativity.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-white/20"></div>
+                        <h4 class="text-xl font-bold">Central Warehousing Corporation (CWC)</h4>
+                        <p class="text-gray-400 text-sm mt-2">Delighted to onboard CWC into our client family in 2025.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-white/20"></div>
+                        <h4 class="text-xl font-bold">UPCL & UPSTDC</h4>
+                        <p class="text-gray-400 text-sm mt-2">Driving Uttar Pradesh towards digital transformation and bringing its rich tourism to life (2024).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-brand-black p-12 rounded-2xl text-center border border-white/10 g-reveal">
+                <p class="text-brand-accent uppercase tracking-widest text-sm mb-4">Interesting Fact</p>
+                <h2 class="text-8xl font-heading font-black mb-4">100<span class="text-brand-accent">%</span></h2>
+                <p class="text-xl font-light text-gray-300">Satisfied customers get our service.</p>
+                <p class="text-sm text-gray-500 mt-6">We collaborate with leaders and entrepreneurs during pivotal moments to help them strengthen their connection and engagement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- People / Team -->
+    <section id="team" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 g-reveal gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="font-heading text-5xl md:text-7xl font-bold uppercase tracking-tighter mb-6">The Talented Team</h2>
+                    <p class="text-gray-400 font-light">We turn caffeine, creativity, and chaos into digital success. No boring strategies—just results, big wins, and the occasional victory dance.</p>
+                </div>
+                <a href="#" class="pb-1 border-b border-brand-accent text-brand-accent hover:text-white hover:border-white transition-all uppercase tracking-widest text-sm whitespace-nowrap">Join Us Now</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Team Member -->
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Prashant Gupta</h4>
+                    <p class="text-brand-accent text-sm">Founder</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Vanshikha Nagal</h4>
+                    <p class="text-brand-accent text-sm">Creative Head</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Laxman</h4>
+                    <p class="text-brand-accent text-sm">Senior Graphic Designer</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Manas Pattani</h4>
+                    <p class="text-brand-accent text-sm">Performance Marketing</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Crrishraj U. Chavda</h4>
+                    <p class="text-brand-accent text-sm">Graphic & Video Editor</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Jayveersinh Chauhan</h4>
+                    <p class="text-brand-accent text-sm">HR & Admin Analyst</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg">
+                    <h4 class="text-xl font-bold mb-1">Tanay Sheth</h4>
+                    <p class="text-brand-accent text-sm">Social Media Manager</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-white/10 hover:border-brand-accent/50 transition-colors g-reveal rounded-lg flex items-center justify-center">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors underline decoration-brand-accent underline-offset-4">View All Members</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs & Insights -->
+    <section class="py-24 px-6 bg-white text-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-heading text-5xl md:text-6xl font-bold uppercase tracking-tighter mb-16 g-reveal text-center">Latest Insights</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Blog 1 -->
+                <div class="group border-b-2 border-black/10 pb-8 hover:border-brand-accent transition-colors g-reveal">
+                    <p class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">21/01/2026</p>
+                    <h3 class="text-2xl font-heading font-bold mb-4 leading-tight group-hover:text-brand-accent transition-colors">Life at Swyft: Chai, Chaos, and Creativity in Ahmedabad</h3>
+                    <a href="#" class="text-sm font-bold uppercase tracking-widest border-b border-black pb-1">Read More</a>
+                </div>
+                <!-- Blog 2 -->
+                <div class="group border-b-2 border-black/10 pb-8 hover:border-brand-accent transition-colors g-reveal">
+                    <p class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">21/01/2026</p>
+                    <h3 class="text-2xl font-heading font-bold mb-4 leading-tight group-hover:text-brand-accent transition-colors">Reputation Management: Why You Need a Digital Bodyguard</h3>
+                    <a href="#" class="text-sm font-bold uppercase tracking-widest border-b border-black pb-1">Read More</a>
+                </div>
+                <!-- Blog 3 -->
+                <div class="group border-b-2 border-black/10 pb-8 hover:border-brand-accent transition-colors g-reveal">
+                    <p class="text-sm font-bold uppercase tracking-widest text-gray-500 mb-4">21/01/2026</p>
+                    <h3 class="text-2xl font-heading font-bold mb-4 leading-tight group-hover:text-brand-accent transition-colors">Your website is Probably Losing You Money (And You Don’t Know It)</h3>
+                    <a href="#" class="text-sm font-bold uppercase tracking-widest border-b border-black pb-1">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-brand-black pt-32 pb-12 px-6 border-t border-white/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-2">
+                    <h2 class="font-heading text-5xl font-bold uppercase tracking-tighter mb-6">Let's Work<br>Together.</h2>
+                    <p class="text-gray-400 text-lg max-w-md mb-8">We work with the largest global brands. Ready to skyrocket your sales and trigger unexpected business growth?</p>
+                    <a href="mailto:info@swyftmedia.in" class="inline-block bg-white text-black px-8 py-4 font-bold uppercase tracking-widest hover:bg-brand-accent transition-colors">Start a Project</a>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest mb-6 border-b border-white/20 pb-4">Offices</h4>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="font-bold text-brand-accent mb-2">Ahmedabad</p>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-2">707, Iscon Elegance, Near Shapath-V,<br>S.G. Highway, Ahmedabad- 380015</p>
+                            <p class="text-gray-400 text-sm">079-66168548</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-brand-accent mb-2">Gandhidham</p>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-2">Plot No 108, Sector 1A,<br>Gandhidham-Kutch, Gujarat. 370201</p>
+                        </div>
+                        <div class="pt-4 text-sm text-gray-300">
+                            <p>+91 9879509784</p>
+                            <p>+91 9574705941</p>
+                            <p class="mt-2 text-brand-accent">info@swyftmedia.in</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-widest mb-6 border-b border-white/20 pb-4">Company</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm uppercase tracking-wide">
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-accent transition-colors">About Us</a></li>
+                        <li><a href="#projects" class="hover:text-brand-accent transition-colors">Projects</a></li>
+                        <li><a href="#services" class="hover:text-brand-accent transition-colors">Services</a></li>
+                        <li><a href="#contact" class="hover:text-brand-accent transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Terms and Conditions</a></li>
+                        <li><a href="#" class="hover:text-brand-accent transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-gray-500 text-sm">
+                <p>&copy; 2026 Swyft Media Productions. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS for Animations -->
+    <script>
+        // Navbar Scrolled State
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'bg-brand-black');
+                nav.classList.remove('bg-brand-black/90');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-brand-black');
+                nav.classList.add('bg-brand-black/90');
+            }
+        });
+
+        // GSAP Scroll Reveal Animations (McCann Style)
+        gsap.registerPlugin(ScrollTrigger);
+        
+        const revealElements = document.querySelectorAll('.g-reveal');
+        
+        revealElements.forEach((element) => {
+            gsap.fromTo(element, 
+                { 
+                    y: 50, 
+                    opacity: 0 
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%", // Triggers when top of element hits 85% of viewport
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
