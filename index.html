@@ -278,7 +278,7 @@
             { client: "Maxwell Engineering Solutions Limited", type: "Website Development", year: "Recent", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800" },
             { client: "Intercity Travels (Indore)", type: "Social Media", year: "Recent", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800" },
             { client: "OMSPACE ROCKET AND EXPLORATION", type: "PR Branding & Marketing", year: "Recent", image: "https://images.unsplash.com/photo-1454789548928-9efd52dc4031?auto=format&fit=crop&q=80&w=800" },
-            { client: "Arristo Resorts & Club", type: "PR Branding & Marketing", year: "Recent", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" },
+            { client: "Arristo Resorts & Club", type: "PR Branding & Marketing", year: "Recent", image: "https://images.unsplash.com/photo-1542314831-c6a4d14eff40?auto=format&fit=crop&q=80&w=800" },
             { client: "AQUADEF", type: "PR Branding & Marketing", year: "Recent", image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" }
         ];
 
@@ -286,73 +286,80 @@
         // SHARED COMPONENTS (Header & Footer)
         // ==================================================================================
 
-        const Header = ({ setPage, currentPage, isMenuOpen, setIsMenuOpen }) => (
-            <motion.header
-                className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100"
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-                <div className="container mx-auto px-6 py-5 flex justify-between items-center">
-                    <div
-                        className="text-2xl font-black tracking-tighter cursor-pointer uppercase"
-                        onClick={() => { setPage("Home"); setIsMenuOpen(false); }}
-                        role="button"
-                        tabIndex={0}
-                        aria-label="Navigate to Home"
-                    >
-                        Swyft Media
-                    </div>
-                    <nav className="hidden lg:flex space-x-8" aria-label="Main Navigation">
-                        {NAV_ITEMS.map((item) => (
-                            <button
-                                key={item}
-                                onClick={() => setPage(item)}
-                                className={`text-sm font-bold uppercase tracking-widest nav-link transition-colors ${currentPage === item ? 'text-black' : 'text-gray-500 hover:text-black'}`}
-                                aria-current={currentPage === item ? "page" : undefined}
-                            >
-                                {item}
-                            </button>
-                        ))}
-                    </nav>
-                    <button 
-                        className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors" 
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
-                </div>
-                <AnimatePresence>
-                    {isMenuOpen && (
-                        <motion.nav
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "100vh", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="fixed inset-0 top-[73px] bg-white z-40 overflow-hidden"
-                            aria-label="Mobile Navigation"
+        const Header = ({ setPage, currentPage, isMenuOpen, setIsMenuOpen, isUIHovered, setIsUIHovered, isScrolled, hasHover }) => {
+            // Show nav if: it's not the Home page, UI is hovered, mobile menu is open, user scrolled past the banner, or it's a touch device
+            const showNav = currentPage !== "Home" || isUIHovered || isMenuOpen || isScrolled || !hasHover;
+
+            return (
+                <motion.header
+                    onMouseEnter={() => setIsUIHovered?.(true)}
+                    onMouseLeave={() => setIsUIHovered?.(false)}
+                    className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-opacity duration-500 ${showNav ? 'opacity-100' : 'opacity-0'}`}
+                    initial={{ y: -100 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                    <div className="container mx-auto px-6 py-5 flex justify-between items-center">
+                        <div
+                            className="text-2xl font-black tracking-tighter cursor-pointer uppercase"
+                            onClick={() => { setPage("Home"); setIsMenuOpen(false); }}
+                            role="button"
+                            tabIndex={0}
+                            aria-label="Navigate to Home"
                         >
-                            <div className="flex flex-col items-center justify-center h-full space-y-8 pb-20">
-                                {NAV_ITEMS.map((item, i) => (
-                                    <motion.button
-                                        key={item}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.1 * i, duration: 0.3 }}
-                                        onClick={() => { setPage(item); setIsMenuOpen(false); }}
-                                        className="text-3xl font-black uppercase tracking-tighter hover:text-gray-500 transition-colors text-center"
-                                    >
-                                        {item}
-                                    </motion.button>
-                                ))}
-                            </div>
-                        </motion.nav>
-                    )}
-                </AnimatePresence>
-            </motion.header>
-        );
+                            Swyft Media
+                        </div>
+                        <nav className="hidden lg:flex space-x-8" aria-label="Main Navigation">
+                            {NAV_ITEMS.map((item) => (
+                                <button
+                                    key={item}
+                                    onClick={() => setPage(item)}
+                                    className={`text-sm font-bold uppercase tracking-widest nav-link transition-colors ${currentPage === item ? 'text-black' : 'text-gray-500 hover:text-black'}`}
+                                    aria-current={currentPage === item ? "page" : undefined}
+                                >
+                                    {item}
+                                </button>
+                            ))}
+                        </nav>
+                        <button 
+                            className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors" 
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+                            aria-expanded={isMenuOpen}
+                        >
+                            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        </button>
+                    </div>
+                    <AnimatePresence>
+                        {isMenuOpen && (
+                            <motion.nav
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "100vh", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                className="fixed inset-0 top-[73px] bg-white z-40 overflow-hidden"
+                                aria-label="Mobile Navigation"
+                            >
+                                <div className="flex flex-col items-center justify-center h-full space-y-8 pb-20">
+                                    {NAV_ITEMS.map((item, i) => (
+                                        <motion.button
+                                            key={item}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.1 * i, duration: 0.3 }}
+                                            onClick={() => { setPage(item); setIsMenuOpen(false); }}
+                                            className="text-3xl font-black uppercase tracking-tighter hover:text-gray-500 transition-colors text-center"
+                                        >
+                                            {item}
+                                        </motion.button>
+                                    ))}
+                                </div>
+                            </motion.nav>
+                        )}
+                    </AnimatePresence>
+                </motion.header>
+            );
+        };
 
         const Footer = ({ setPage }) => (
             <footer className="bg-black text-white pt-24 pb-12 rounded-t-[3rem] mt-12 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
@@ -422,8 +429,11 @@
         // PAGE: HOME
         // ==================================================================================
 
-        const HomePage = ({ setPage }) => {
+        const HomePage = ({ setPage, isUIHovered, setIsUIHovered, hasHover }) => {
             useSEO("Home", "Swyft Media is a powerful branding agency blending strategic communication, digital innovation, and creative design to build powerful brand experiences.");
+
+            // Show hero text if hovered OR if it's a touch device (no hover capability)
+            const showHeroText = isUIHovered || !hasHover;
 
             const SERVICES_HOME = [
                 {
@@ -479,8 +489,14 @@
             return (
                 <div className="pb-12">
                     <SchemaInjector schema={blogSchema} />
-                    {/* Hero */}
-                    <section className="relative w-full h-screen flex flex-col justify-center mb-20 overflow-hidden bg-black" aria-label="Hero Section">
+                    
+                    {/* Immersive Hover-Triggered Hero */}
+                    <section 
+                        onMouseEnter={() => setIsUIHovered?.(true)}
+                        onMouseLeave={() => setIsUIHovered?.(false)}
+                        className="relative w-full h-screen flex flex-col justify-center mb-20 overflow-hidden bg-black" 
+                        aria-label="Hero Section"
+                    >
                         {/* Full Screen Video Background */}
                         <video 
                             autoPlay 
@@ -488,7 +504,7 @@
                             muted 
                             playsInline 
                             poster="https://images.unsplash.com/photo-1573164713619-24cb7154abcb?auto=format&fit=crop&q=80&w=1200"
-                            className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
+                            className="absolute inset-0 w-full h-full object-cover z-0 opacity-70 pointer-events-none"
                         >
                             {/* Replaced failing video with a robust open video link to fix black screen */}
                             <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
@@ -496,31 +512,29 @@
                         </video>
                         
                         {/* Gradient overlay for better text contrast */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10 pointer-events-none"></div>
 
-                        {/* Hero Content */}
-                        <div className="container mx-auto px-6 relative z-20 mt-16">
+                        {/* Hero Content (Fades in on hover) */}
+                        <div className={`container mx-auto px-6 relative z-20 mt-16 transition-all duration-700 transform ${showHeroText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                             <div className="max-w-4xl">
-                                <FadeIn direction="up">
-                                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter hero-text mb-8 uppercase text-white drop-shadow-lg">
-                                        Shaping Brands <br/> For The Digital Age
-                                    </h1>
-                                    <p className="text-xl md:text-3xl font-light text-gray-200 max-w-4xl leading-tight drop-shadow-md">
-                                        From PR to Pixels — We Do It All.<br/><br/>
-                                        At Swyft Media, we blend strategic communication, digital innovation, and creative design to build powerful brand experiences. Whether it’s PR & communication training, media monitoring, reputation management, web development, or digital marketing — we’re here to drive your growth in every direction.
-                                    </p>
-                                    <div className="mt-12 flex flex-wrap items-center gap-6">
-                                        <motion.button
-                                            onClick={() => setPage('Contact Us')}
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="bg-yellow-400 text-black px-8 py-4 font-bold uppercase tracking-wider rounded-full hover:bg-yellow-500 transition-all shadow-[0_0_20px_rgba(250,204,21,0.4)]"
-                                        >
-                                            Get Started
-                                        </motion.button>
-                                        <span className="text-sm font-bold uppercase tracking-widest text-gray-200 drop-shadow-md">Since 2015</span>
-                                    </div>
-                                </FadeIn>
+                                <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter hero-text mb-8 uppercase text-white drop-shadow-lg">
+                                    Shaping Brands <br/> For The Digital Age
+                                </h1>
+                                <p className="text-xl md:text-3xl font-light text-gray-200 max-w-4xl leading-tight drop-shadow-md">
+                                    From PR to Pixels — We Do It All.<br/><br/>
+                                    At Swyft Media, we blend strategic communication, digital innovation, and creative design to build powerful brand experiences. Whether it’s PR & communication training, media monitoring, reputation management, web development, or digital marketing — we’re here to drive your growth in every direction.
+                                </p>
+                                <div className="mt-12 flex flex-wrap items-center gap-6">
+                                    <motion.button
+                                        onClick={() => setPage('Contact Us')}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="bg-yellow-400 text-black px-8 py-4 font-bold uppercase tracking-wider rounded-full hover:bg-yellow-500 transition-all shadow-[0_0_20px_rgba(250,204,21,0.4)]"
+                                    >
+                                        Get Started
+                                    </motion.button>
+                                    <span className="text-sm font-bold uppercase tracking-widest text-gray-200 drop-shadow-md">Since 2015</span>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -1345,6 +1359,22 @@
         const App = () => {
             const [currentPage, setCurrentPage] = useState("Home");
             const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isUIHovered, setIsUIHovered] = useState(false);
+            const [isScrolled, setIsScrolled] = useState(false);
+            const [hasHover, setHasHover] = useState(true);
+
+            // Listen for scrolling and hover capabilities
+            useEffect(() => {
+                // Check if device supports hover
+                setHasHover(window.matchMedia("(hover: hover)").matches);
+                
+                const handleScroll = () => {
+                    // Show UI if scrolled past 50% of the screen height
+                    setIsScrolled(window.scrollY > window.innerHeight * 0.5);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
             // Scroll to top automatically when navigating to a new page
             useEffect(() => {
@@ -1354,7 +1384,12 @@
             const renderPage = () => {
                 switch(currentPage) {
                     case "Home": 
-                        return <HomePage setPage={setCurrentPage} />;
+                        return <HomePage 
+                            setPage={setCurrentPage} 
+                            isUIHovered={isUIHovered} 
+                            setIsUIHovered={setIsUIHovered}
+                            hasHover={hasHover} 
+                        />;
                     case "About Us":
                         return <AboutPage />;
                     case "Service":
@@ -1368,13 +1403,27 @@
                     case "People":
                         return <PeoplePage />;
                     default: 
-                        return <HomePage setPage={setCurrentPage} />;
+                        return <HomePage 
+                            setPage={setCurrentPage} 
+                            isUIHovered={isUIHovered} 
+                            setIsUIHovered={setIsUIHovered}
+                            hasHover={hasHover} 
+                        />;
                 }
             };
 
             return (
                 <div className="flex flex-col min-h-screen">
-                    <Header setPage={setCurrentPage} currentPage={currentPage} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+                    <Header 
+                        setPage={setCurrentPage} 
+                        currentPage={currentPage} 
+                        isMenuOpen={isMenuOpen} 
+                        setIsMenuOpen={setIsMenuOpen} 
+                        isUIHovered={isUIHovered}
+                        setIsUIHovered={setIsUIHovered}
+                        isScrolled={isScrolled}
+                        hasHover={hasHover}
+                    />
                     
                     <main className="flex-grow">
                         <AnimatePresence mode="wait">
