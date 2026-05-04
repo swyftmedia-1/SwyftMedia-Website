@@ -1,6 +1,10 @@
 User-agent: *
 
 # 1. Allow only specific sections
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /scripts/
+Disallow: /temp/
 Allow: /Home/
 Allow: /About Us/
 Allow: /Service/
