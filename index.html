@@ -14,7 +14,80 @@
 
     <head>
   <meta name="robots" content="index, follow">     
-   </head>
+   
+<style>
+/* Premium theme refinements */
+body {
+    background: #ffffff;
+    color: #111827;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.bg-black {
+    background: linear-gradient(180deg, #080808 0%, #111111 100%) !important;
+}
+
+.text-gray-400 {
+    color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        line-height: 1.1;
+    }
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mobile performance and responsive improvements */
+* { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: clamp(2.4rem, 11vw, 4rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -0.04em;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  section {
+    scroll-margin-top: 70px;
+  }
+
+  p {
+    word-break: normal;
+  }
+
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* Reduce animation load on low power devices */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+</style>
+</head>
 
      <head>
   <meta name="robots" content="noindex, follow">     
@@ -34,7 +107,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1468389831417958');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img decoding="async" height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
@@ -170,7 +243,9 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
     <!-- Framer Motion -->
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
 
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
         body{
@@ -212,7 +287,22 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
         .nav-link:hover::after {
             width: 100%;
         }
-    </style>
+    
+/* Mobile and performance improvements */
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+img { max-width: 100%; height: auto; }
+
+@media (max-width: 768px) {
+  h1 { line-height: 1.05 !important; }
+  h2 { line-height: 1.15 !important; }
+  .container { padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* softer premium theme adjustments */
+.bg-gray-50 { background-color: #f8f8f6 !important; }
+
+</style>
 </head>
 <body>
 
@@ -316,7 +406,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
         // GLOBAL DATA
         // ==================================================================================
 
-        const NAV_ITEMS = ["Home", "About Us", "Service", "Media Coverage", "Projects", "Contact Us", "People", "Prasthanam – 2025"];
+        const NAV_ITEMS = ["Home", "About Us", "Service", "Media Coverage", "Projects", "Blog", "Contact Us", "People", "Prasthanam – 2025"];
         
          <nav class="static-navbar">
               <a href="/">Home</a>
@@ -477,9 +567,11 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                 <li><button onClick={() => setPage("About Us")} className="hover:text-white transition-colors text-left w-full">About Us</button></li>
                                 <li><button onClick={() => setPage("Projects")} className="hover:text-white transition-colors text-left w-full">Projects</button></li>
                                 <li><button onClick={() => setPage("Service")} className="hover:text-white transition-colors text-left w-full">Services</button></li>
+                                <li><button onClick={() => setPage("Blog")} className="hover:text-white transition-colors text-left w-full">Blog</button></li>
                                 <li><button onClick={() => setPage("Contact Us")} className="hover:text-white transition-colors text-left w-full">Contact Us</button></li>
                             </ul>
                         </section>
+                        
                         <section aria-labelledby="footer-locations">
                             <h3 id="footer-locations" className="text-xl font-bold mb-6">Locations</h3>
                             <address className="text-gray-400 text-sm space-y-6 not-italic">
@@ -501,6 +593,27 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                 </div>
                             </address>
                         </section>
+
+                        <section aria-labelledby="footer-social">
+                            <h3 id="footer-social" className="text-xl font-bold mb-6">Follow Us</h3>
+                            <ul className="space-y-4 text-gray-400 text-sm">
+                                <li>
+                                    <a href="https://www.instagram.com/swyftmediapr/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3">
+                                        <span>Instagram</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/swyft-media-productions" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3">
+                                        <span>LinkedIn</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/p/SwYft-Media-ProductionS-61560788151421/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3">
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
                     </div>
                     <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                         <p className="text-sm text-gray-500">© 2026 Swyft Media Productions. All rights reserved.</p>
@@ -510,7 +623,16 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
             </footer>
         );
 
-        // ==================================================================================
+        const BLOGS = [
+    { date: "1 Aug 2026", title: "Why Great Products need Great Marketing", desc: "Great products need great marketing. Not as a crutch. Not as a shortcut. But as an equal partner in the journey from creation to impact.", link: "https://swyftmedia01.blogspot.com/2026/08/why-great-products-need-great-marketing.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjGoX1lAOf14dyNvU5viJc9LNcSixjpQk62P8vDTG4EVFpwAcDlOz1DCfh76UwDm1la8_oMtT9eDb9l8ZmfP0TiHuS7gIYOzR8_5xxODzvbaddngJx1D0wEsEnk93pXLi0WbVgJe6Aex89XqZxkynRNZ05ZqzmqULPMSJtQr9FywJruI8QE4UeFyQKj9Gs" },
+    { date: "2 Aug 2026", title: "How to Build a Brand That Outlasts Trends", desc: "Why Trends Feel Like Strategy (But Aren't)", link: "https://swyftmedia01.blogspot.com/2026/08/how-to-build-brand-that-outlasts-trends.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhsy_MtFU1fG31glN-iKnxVu1Jy8mTPpjLhlTxEthMXSVNM8neyIr0g5DMoFvH1fI0QnKY_ApPnFxQL67DAag7GGZiQsiXNr9z-InL3TqF8f3PpJAOOXIPrLyZhdirvK7BUE80V4j7xnfVV0ij58E3ulXGgUPF6MIAL5cVysgxJhvc5bXFOt8mUCy8GyyU" },
+    { date: "3 Aug 2026", title: "Creative That Builds Brands and Drive Results", desc: "Fine is the enemy of great. And in today's attention economy, fine is functionally invisible.", link: "https://swyftmedia01.blogspot.com/2026/08/creative-that-builds-brands-and-drive.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjwirVgNM3xlDUkOwYydLe6DXsHZPtlhs6xbLnqaGwqjbPghIwcWYeUIQRZriCv9EEKZbxMWtcZDJ71rflqjQHpmynJFYn30IWbBEGUtqDJvTlbp8oM2qwJVJ6ld12P4JdRKy4Xq6d4jhtLW1ifPU_cm-dsjegaP9D8N5Tpy2MLp0Z6GuKVUVDX7diPVfg=w640-h360" },
+    { date: "4 Aug 2026", title: "How to Turn Casual Viewers To Buyers", desc: "Understand Why People Watch But Don't Buy", link: "https://swyftmedia01.blogspot.com/2026/07/how-to-turn-casual-viewers-to-buyers.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgsFbL4U9uq8XAc1-B4_scFp6KK7IjjxSd8lXDnl-mEips5Y4qXvJArVreLpagcLGgbysdSC6nP38v6ECH6O-O9HhC9joNnkFo4ygrNgsGEvj17AJzF_aTwVOy5tO8sGk3RDWkYLp8VdJ9ZdDwlOJufcu3TdBGFw052G1vlcYk0KBoeKKnML_SxX41684Y=w640-h360" },
+    { date: "5 Aug 2026", title: "Why Unpolished Content Outperforms Studios.", desc: "The Trust Economy Has Replaced the Attention Economy", link: "https://swyftmedia01.blogspot.com/2026/07/why-unpolished-content-outperforms.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjEcuM3seq6xlrVodUZX__4RWvH1RghoURpY5wWejdIF2oKNPsX4VsLw1yN-qgH9Rr6LInEt-WAxAh8dfd-_4t6bQaef1DWBGn5HUbjpa0q19cp-Cc1z7iMHW_-P8EmqmG39_dXAg0SLXsQhzAH-tYE7prLyHtGGh9e85HetkWjHB_oTqoWylAziLqCVNU" },
+    { date: "6 Aug 2026", title: "The Secret of Viral Brand Growth", desc: "Virality is an emotion, not an algorithm", link: "https://swyftmedia01.blogspot.com/2026/08/the-secret-of-viral-brand-growth.html", image: "https://blogger.googleusercontent.com/img/a/AVvXsEin41xztLnXHjpOpxOtJGN563WbpVXRk0za3DxoKTK--kJJ4sbJrOoJIgt_9o0jr_ZvUAdF4OFekbOAk4brMhY07mNSooP42RuiyIT8RNhYHRN-428iO3ou1RHEbhBaGw4dYU_z4QSDNK6ubEW3-0d3kd0nrzv1c0VgJcpyKZVGPcc2Uuasz_RMagZvitI" }
+];
+
+// ==================================================================================
         // PAGE: HOME
         // ==================================================================================
 
@@ -518,7 +640,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
             useSEO("Home", "Swyft Media is a powerful branding agency blending strategic communication, digital innovation, and creative design to build powerful brand experiences.");
 
             // Show hero text if hovered OR if it's a touch device (no hover capability)
-            const showHeroText = isUIHovered || !hasHover;
+            const showHeroText = true;
 
             const SERVICES_HOME = [
                 {
@@ -547,11 +669,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                 }
             ];
 
-            const BLOGS = [
-                { date: "21/01/2026", title: "Life at Swyft: Chai, Chaos, and Creativity in Ahmedabad", desc: "About Life at Swyft: Chai, Chaos, and Creativity in Ahmedabad.", link: "#", image: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=800" },
-                { date: "21/01/2026", title: "Reputation Management: Why You Need a Digital Bodyguard", desc: "About Reputation Management: Why You Need a Digital Bodyguard.", link: "#", image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=800" },
-                { date: "21/01/2026", title: "Your website is Probably Losing You Money, and You Don’t Know It", desc: "About Your Website is Probably Losing You Money and You Don’t Even Know It.", link: "#", image: "Money.webp?auto=format&fit=crop&q=80&w=800" },
-            ];
+
 
             // Blog Schema for Article Carousels / Top Stories SERP
             const blogSchema = {
@@ -589,9 +707,9 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10 pointer-events-none"></div>
 
                            {/* Hero Content (Fades in on hover) */}
-                           <div className={`container mx-auto px-6 relative z-20 mt-16 transition-all duration-700 transform ${showHeroText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                           <div className={`container mx-auto px-6 relative z-20 mt-16 transition-all duration-700 transform opacity-100 translate-y-0`}>
                                <div className="max-w-4xl">
-                                   <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter hero-text mb-8 uppercase text-white drop-shadow-lg">
+                                   <h1 className="hero-heading text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter hero-text mb-8 uppercase text-white drop-shadow-lg">
                                        Shaping Brands <br/> For The Digital Age
                                    </h1>
                                    <p className="text-xl md:text-3xl font-light text-gray-200 max-w-4xl leading-tight drop-shadow-md">
@@ -717,7 +835,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                             whileHover={{ y: -10 }}
                                             className="group relative cursor-pointer overflow-hidden rounded-3xl h-80 flex flex-col justify-end shadow-lg"
                                         >
-                                            <img src={project.image} alt={`Project for ${project.client}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                            <img src={project.image} alt={`Project for ${project.client}`} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:bg-black/70"></div>
                                             <div className="relative p-8 z-10">
                                                 <h4 className="text-xl font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">{project.client}</h4>
@@ -811,7 +929,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                             <img 
                                                 src={member.image} 
                                                 alt={`Photo of ${member.name}`}
-                                                loading="lazy"
+                                                loading="lazy" decoding="async"
                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                                             />
                                         </div>
@@ -849,7 +967,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                             className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col rounded-3xl overflow-hidden min-h-[400px]"
                                         >
                                             <div className="h-56 overflow-hidden relative rounded-b-3xl">
-                                                <img src={blog.image} alt={blog.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                                <img src={blog.image} alt={blog.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                                             </div>
                                             <div className="p-8 flex flex-col flex-grow justify-between">
                                                 <div>
@@ -857,7 +975,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                                     <h3 className="text-xl font-bold mb-4 group-hover:underline decoration-2 underline-offset-4 leading-tight">{blog.title}</h3>
                                                     <p className="text-sm text-gray-600 mb-6 line-clamp-2">{blog.desc}</p>
                                                 </div>
-                                                <a href={blog.link} onClick={(e) => e.preventDefault()} className="inline-flex items-center text-sm font-bold uppercase tracking-widest text-black group-hover:text-gray-500 transition-colors mt-auto">
+                                                <a href={blog.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold uppercase tracking-widest text-black group-hover:text-gray-500 transition-colors mt-auto">
                                                     Read More <ArrowRight size={18} className="ml-2" />
                                                 </a>
                                             </div>
@@ -1187,7 +1305,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                     whileHover={{ scale: 1.02 }}
                                     className="group relative overflow-hidden rounded-[3rem] rounded-tr-xl rounded-bl-xl cursor-pointer min-h-[450px] shadow-xl"
                                 >
-                                    <img src={camp.image} alt={camp.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                                    <img src={camp.image} alt={camp.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:bg-black/80"></div>
                                     <div className="relative z-10 p-10 h-full flex flex-col justify-end text-white">
                                         <h2 className="text-3xl font-bold mb-4">{camp.title}</h2>
@@ -1237,7 +1355,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                     whileHover={{ y: -10 }}
                                     className="group relative cursor-pointer overflow-hidden rounded-3xl h-96 flex flex-col justify-end shadow-md hover:shadow-2xl transition-all"
                                 >
-                                    <img src={project.image} alt={`Project for ${project.client}`} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                    <img src={project.image} alt={`Project for ${project.client}`} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity duration-300 group-hover:bg-black/70"></div>
                                     <div className="relative p-8 z-10">
                                         <h2 className="text-2xl font-bold mb-2 text-white group-hover:text-yellow-400 transition-colors">{project.client}</h2>
@@ -1411,7 +1529,7 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                                             <img 
                                                 src={member.image} 
                                                 alt={`Photo of ${member.name}`}
-                                                loading="lazy" 
+                                                loading="lazy" decoding="async" 
                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                                             />
                                         </div>
@@ -1426,7 +1544,29 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
             );
         };
 
-        // ==================================================================================
+        const BlogPage = () => {
+    useSEO("Blogs", "Latest marketing and branding insights from Swyft Media.");
+    return (
+        <div className="pt-32 pb-24 px-6 container mx-auto">
+            <h1 className="text-5xl md:text-7xl font-black mb-12 uppercase">Swyft Media Blogs</h1>
+            <div className="grid md:grid-cols-3 gap-8">
+                {BLOGS.map((blog, idx) => (
+                    <article key={idx} className="bg-white rounded-3xl shadow-xl overflow-hidden">
+                        <img src={blog.image} alt={blog.title} className="w-full h-56 object-cover" />
+                        <div className="p-8">
+                            <p className="text-sm text-gray-500">{blog.date}</p>
+                            <h2 className="text-2xl font-bold mt-3">{blog.title}</h2>
+                            <p className="mt-4 text-gray-600">{blog.desc}</p>
+                            <a href={blog.link} target="_blank" rel="noopener noreferrer" className="inline-block mt-6 font-bold">Read Full Article →</a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+// ==================================================================================
         // MAIN APP COMPONENT
         // ==================================================================================
 
@@ -1472,6 +1612,8 @@ src="https://www.facebook.com/tr?id=1468389831417958&ev=PageView&noscript=1"
                         return <MediaCoveragePage />;
                     case "Projects":
                         return <ProjectsPage />;
+                    case "Blog":
+                        return <BlogPage />;
                     case "Contact Us":
                         return <ContactPage />;
                     case "People":
