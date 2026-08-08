@@ -1,21 +1,5 @@
 User-agent: *
 
-# 1. Allow only specific sections
-Disallow: /wp-admin/
-Disallow: /scripts/
-Disallow: /temp/
-Allow: /Home/
-Allow: /About Us/
-Allow: /Service/
-Allow: /Media Coverage/
-Allow: /Projects/
-Allow: /Blogs/
-Allow: /Contact Us/
-Allow: /People/
-Allow: /Prasthanam - 2025/
+Allow: /
 
-# 2. Block everything else
-Disallow: /
-
-# 3. Reference your sitemap
 Sitemap: https://swyftmedia.in/sitemap.xml
