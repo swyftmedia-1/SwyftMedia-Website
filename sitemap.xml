@@ -2,44 +2,44 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- 1. Home -->
   <url>
     <loc>https://swyftmedia.in/</loc>
-    <priority>1.0</priority>
   </url>
 
+  <!-- 2. About Us -->
   <url>
     <loc>https://swyftmedia.in/about</loc>
-    <priority>0.8</priority>
   </url>
 
+  <!-- 3. Service -->
   <url>
     <loc>https://swyftmedia.in/services</loc>
-    <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://swyftmedia.in/projects</loc>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://swyftmedia.in/blog</loc>
-    <priority>0.8</priority>
-  </url>
-
+  <!-- 4. Media Coverage -->
   <url>
     <loc>https://swyftmedia.in/media-coverage</loc>
-    <priority>0.6</priority>
   </url>
 
+  <!-- 5. Projects -->
+  <url>
+    <loc>https://swyftmedia.in/projects</loc>
+  </url>
+
+  <!-- 6. Blog -->
+  <url>
+    <loc>https://swyftmedia.in/blog</loc>
+  </url>
+
+  <!-- 7. Contact Us -->
   <url>
     <loc>https://swyftmedia.in/contact</loc>
-    <priority>0.7</priority>
   </url>
 
+  <!-- 8. People -->
   <url>
     <loc>https://swyftmedia.in/people</loc>
-    <priority>0.5</priority>
   </url>
 
 </urlset>
