@@ -483,7 +483,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid #f5c000; outline-offs
         // GLOBAL DATA
         // ==================================================================================
 
-        const NAV_ITEMS = ["Home", "About Us", "Service", "Media Coverage", "Projects", "Blog", "Contact Us", "People", "Prasthanam – 2025"];
+        const NAV_ITEMS = ["Home", "About Us", "Service", "Media Coverage", "Projects", "Blog", "Contact Us", "People", "Swyft Pass"];
 const FULL_TEAM = [
             { name: "Prashant Gupta", role: "Founder, SwYft Media Productions", image: "Prashant Gupta.webp?auto=format&fit=crop&q=80&w=400" },
             { name: "Vanshikha Nagal", role: "Creative Head", image: "Vanshika Nagal.webp?auto=format&fit=crop&q=80&w=400" },
@@ -546,10 +546,10 @@ const FULL_TEAM = [
                             tabIndex={0}
                             aria-label="Navigate to Home"
                         >
-                           <img src="SwYft Media LOGO.png" alt="Swyft Media Logo" className="h-20 md:h-30 w-auto" />
+                           <img src="SwYft Media LOGO.png" alt="Swyft Media Logo" className="h-16 md:h-[72px] w-auto max-w-[180px] object-contain" />
                           
                         </div>
-                        <nav className="hidden lg:flex space-x-8" aria-label="Main Navigation">
+                        <nav className="hidden lg:flex space-x-6 xl:space-x-8" aria-label="Main Navigation">
                             {NAV_ITEMS.map((item) => (
                                 <button
                                     key={item}
@@ -1106,39 +1106,16 @@ const BLOGS = [
                         </div>
                     </section>
 
-                    {/* Blogs / Insights */}
-                    <section className="py-24 px-6 bg-gray-50" aria-labelledby="home-insights">
-                        <div className="container mx-auto">
-                            <FadeIn className="mb-12 flex justify-between items-end">
-                                <div>
-                                    <h2 id="home-insights" className="text-4xl md:text-5xl font-bold mb-4">Latest Insights & Updates</h2>
-                                </div>
-                            </FadeIn>
-                            <StaggerWrap className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {BLOGS.map((blog, idx) => (
-                                    <StaggerItem key={idx}>
-                                        <motion.article 
-                                            whileHover={{ y: -10 }}
-                                            className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col rounded-3xl overflow-hidden min-h-[400px]"
-                                        >
-                                            <div className="h-56 overflow-hidden relative rounded-b-3xl">
-                                                <img src={blog.image} alt={blog.title} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                                            </div>
-                                            <div className="p-8 flex flex-col flex-grow justify-between">
-                                                <div>
-                                                    <p className="text-sm text-gray-500 mb-4 font-mono">Blogs • {blog.date}</p>
-                                                    <h3 className="text-xl font-bold mb-4 group-hover:underline decoration-2 underline-offset-4 leading-tight">{blog.title}</h3>
-                                                    <p className="text-sm text-gray-600 mb-6 line-clamp-2">{blog.desc}</p>
-                                                </div>
-                                                <a href={blog.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-bold uppercase tracking-widest text-black group-hover:text-gray-500 transition-colors mt-auto">
-                                                    Read More <ArrowRight size={18} className="ml-2" />
-                                                </a>
-                                            </div>
-                                        </motion.article>
-                                    </StaggerItem>
-                                ))}
-                            </StaggerWrap>
-                        </div>
+                    {/* Swyft Pass Intro Section */}
+                    <section aria-labelledby="home-swyft-pass" style={{padding: 0, margin: 0}}>
+                        <iframe
+                            src="intro.html"
+                            title="Swyft Pass"
+                            style={{width: '100%', minHeight: '100svh', border: 'none', display: 'block'}}
+                            loading="lazy"
+                            scrolling="no"
+                
+                        />
                     </section>
                 </div>
             );
@@ -1722,11 +1699,43 @@ const BLOGS = [
 };
 
 // ==================================================================================
+        // PAGE: SWYFT PASS
+        // ==================================================================================
+
+        const SwyftPassPage = () => {
+            useSEO("Swyft Pass", "SWYFT ONE Business Pass — India's Creative Wallet for Businesses. Reserve Once. Create All Year.");
+            return (
+                <div style={{paddingTop: '80px'}}>
+                    <iframe
+                        src="business-pass.html"
+                        title="Swyft Pass – Business Pass"
+                        style={{width: '100%', minHeight: 'calc(100vh - 80px)', border: 'none', display: 'block'}}
+                        loading="eager"
+                    />
+                </div>
+            );
+        };
+
+// ==================================================================================
         // MAIN APP COMPONENT
         // ==================================================================================
 
         const App = () => {
             const [currentPage, setCurrentPage] = useState("Home");
+
+            useEffect(() => {
+                const handleSwyftPassMessage = (event) => {
+                    if (event.data?.type === 'OPEN_SWYFT_PASS') {
+                        setCurrentPage('Swyft Pass');
+                    }
+                };
+
+                window.addEventListener('message', handleSwyftPassMessage);
+
+                return () => {
+                    window.removeEventListener('message', handleSwyftPassMessage);
+                };
+            }, []);
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [isUIHovered, setIsUIHovered] = useState(false);
             const [isScrolled, setIsScrolled] = useState(false);
@@ -1747,7 +1756,7 @@ const BLOGS = [
 
             // Scroll to top automatically when navigating to a new page
             useEffect(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo(0, 0);
             }, [currentPage]);
 
             const renderPage = () => {
@@ -1773,6 +1782,8 @@ const BLOGS = [
                         return <ContactPage />;
                     case "People":
                         return <PeoplePage />;
+                    case "Swyft Pass":
+                        return <SwyftPassPage />;
                     default: 
                         return <HomePage 
                             setPage={setCurrentPage} 
@@ -1797,17 +1808,23 @@ const BLOGS = [
                     />
                     
                     <main className="flex-grow">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentPage}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -15 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
-                            >
+                        {currentPage === "Swyft Pass" ? (
+                            <div key="swyft-pass">
                                 {renderPage()}
-                            </motion.div>
-                        </AnimatePresence>
+                            </div>
+                        ) : (
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={currentPage}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -15 }}
+                                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                                >
+                                    {renderPage()}
+                                </motion.div>
+                            </AnimatePresence>
+                        )}
                     </main>
 
                     <Footer setPage={setCurrentPage} />
